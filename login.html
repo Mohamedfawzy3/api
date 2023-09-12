@@ -13,27 +13,25 @@
       href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Cairo:wght@200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@400;700&family=Philosopher:ital,wght@0,400;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Tajawal:wght@200;300;400;500;800;900&family=Work+Sans:ital,wght@0,200;0,300;0,600;1,100;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <title>Sign UP</title>
+    <title>Sign Up</title>
   </head>
   <body>
-    <!-- log in page -->
-    <div class="sign_up">
+    <div class="log_in">
       <div class="container">
         <div class="BOX">
           <div class="box text_detail">
             <div>
-              <h2>Welcome Back!</h2>
+              <h2>Hello, Friend!</h2>
               <div class="text">
-                To keep connected with us please login with your personal info
+                Enter your personal details and start journey with us
               </div>
-              <a href="./login.html"><button class="btn">SIGN IN</button></a>
+              <a href="./index.html"><button class="btn">SIGN UP</button></a>
             </div>
           </div>
           <div class="box input_detail">
-            <h2>Creat Account</h2>
-
+            <h2>sign in</h2>
             <div class="inputs">
-              <form action="" method="get" id="register">
+              <form action="" method="get" id="">
                 <div class="userName">
                   <input
                     type="text"
@@ -44,16 +42,10 @@
                   />
                   <span></span>
                 </div>
-                <div class="email">
-                  <input
-                    type="email"
-                    name="email"
-                    id="user_email"
-                    placeholder="Email"
-                    msg="you must enter Email"
-                  />
-                  <span></span>
-                </div>
+                <!-- <div class="email">
+    <input type="email" name="email" id="user_email" placeholder="Email">
+    <span></span>
+   </div> -->
                 <div class="pass">
                   <input
                     type="password"
@@ -64,17 +56,44 @@
                   />
                   <span></span>
                 </div>
-                <div>
-                  <button type="submit" class="btn">SIGN UP</button>
-                  <span></span>
-                </div>
+                <button type="submit" class="btn">SIGN IN</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <script src="./js/main.js"></script>
+    <script>
+      document.querySelector(".log_in form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log(check_input(user_name), check_input(user_pass));
+  if (!check_input(user_name) || !check_input(user_pass)) {
+  }
+  console.log(user_name.value);
+  if (
+    JSON.parse(localStorage.getItem(`user.${user_name.value}`) !== null) &&
+    user_name.value.length != 0
+  ) {
+    console.log(";;;;;;;;;;");
+    console.log(
+      JSON.parse(localStorage.getItem(`user.${user_name.value}`)).pass
+    );
+    if (
+      JSON.parse(localStorage.getItem(`user.${user_name.value}`)).pass ===
+      user_pass.value
+    ) {
+      window.location.href = "./allproducts.html";
+    } else {
+      user_pass.nextElementSibling.textContent = "Wrong passward";
+    }
+  } else if (
+    JSON.parse(localStorage.getItem(`user.${user_name.value}`) == null) &&
+    user_name.value.length != 0
+  ) {
+    window.location.href = "./index.html";
+  }
+});
+    </script>
   </body>
 </html>
