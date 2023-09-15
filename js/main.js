@@ -106,5 +106,5 @@ document.querySelector(".sign_up form").addEventListener("submit", (e) => {
     user_name.nextElementSibling.textContent = `This user is aready sign up try to login.`;
   }
 });
-// --------------------login check--------------------
+
 
